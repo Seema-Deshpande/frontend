@@ -1,0 +1,22 @@
+<div cdkDropList class="task-list" (cdkDropListDropped)="drop.emit($event)" *ngIf="!selectedTask">
+  <div *ngFor="let task of tasks"
+       cdkDrag
+       [cdkDragData]="task"
+       class="task-item"
+       [ngClass]="{
+         'overdue': task.notificationStatus === 'overdue',
+         'due-soon': task.notificationStatus === 'due-soon'
+       }">
+    <div class="task-details">
+      <h3>{{ task?.title }}</h3>
+      <p>{{ task?.description }}</p>
+      <p><strong>Due Date:</strong> {{ task?.dueDate | date }}</p>
+      <p><strong>Notification:</strong> {{ task?.notificationStatus }}</p>
+      <p><strong>Status:</strong> <span [ngClass]="getStatusClass(task.status)">{{ task?.status | uppercase }}</span></p>
+    </div>
+    <div class="task-actions">
+      <button (click)="onDelete(task)">Delete</button>
+      <button (click)="onEditTask(task)">Edit</button>
+    </div>
+  </div>
+</div>

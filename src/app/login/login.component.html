@@ -1,0 +1,26 @@
+<div class="login-background">
+  <div class="login-container">
+      <div class="login-card">
+          <h1 class="login-title">Task Manager Login</h1>
+          <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+              <div class="input-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" required [(ngModel)]="username" name="username" #usernameModel="ngModel" placeholder="Enter your username">
+                  <div *ngIf="usernameModel.invalid && (usernameModel.dirty || usernameModel.touched)" class="error-message">
+                      Username is required.
+                  </div>
+              </div>
+              <div class="input-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" required minlength="6" [(ngModel)]="password" name="password" #passwordModel="ngModel" placeholder="Enter your password">
+                  <div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)" class="error-message">
+                      <div *ngIf="passwordModel.errors?.['required']">Password is required.</div>
+                      <div *ngIf="passwordModel.errors?.['minlength']">Password must be at least 6 characters long.</div>
+                  </div>
+              </div>
+              <button type="submit" [disabled]="loginForm.invalid" class="submit-button">Login</button>
+              <a routerLink="/register" class="register-link">If not a user? Please register here</a>
+          </form>
+      </div>
+  </div>
+</div>

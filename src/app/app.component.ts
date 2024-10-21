@@ -1,10 +1,15 @@
+// client/src/app/app.component.ts
 import { Component } from '@angular/core';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  backendMessage = '';
+
+  constructor() {
+  }
 }

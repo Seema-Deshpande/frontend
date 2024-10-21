@@ -1,0 +1,21 @@
+<div class="notification-icon" (click)="toggleNotificationPanel()">
+    <img src="../../assets/notification-icon.svg" alt="Notifications" />
+    <span class="notification-badge" *ngIf="unseenCount > 0">{{ unseenCount }}</span>
+  </div>
+
+  <div class="notification-drawer" *ngIf="showNotifications">
+    <div class="notification-header">
+      <h2>Notifications</h2>
+      <button (click)="clearNotifications()">Clear All</button>
+    </div>
+    <div class="notification-container">
+      <div *ngFor="let notification of notifications"
+           [ngClass]="['notification-item', notification.type]" (click)="onNotificationClick(notification)">
+           <span *ngIf="!isSeen(notification.id)">New</span>
+        <p><strong>{{ notification.title }}</strong></p>
+        <p>{{ notification.message }}</p>
+        <p><small>Status: {{ notification.status }}</small></p>
+        <p><small>Due Date: {{ notification.date | date }}</small></p>
+      </div>
+    </div>
+  </div>

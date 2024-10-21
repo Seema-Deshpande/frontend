@@ -1,0 +1,64 @@
+<div class="task-management">
+  <h2>Task Management</h2>
+  <div *ngIf="task">
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <label for="title">Title:</label>
+      <input
+        id="title"
+        [(ngModel)]="task.title"
+        name="title"
+        required
+        [ngClass]="{'invalid-input': taskForm.submitted && !task.title}" 
+      />
+      <div *ngIf="taskForm.submitted && !task.title" class="error-message">
+        Title is required.
+      </div>
+
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="task.description"
+        name="description"
+        required
+        [ngClass]="{'invalid-input': taskForm.submitted && !task.description}"
+      ></textarea>
+      <div *ngIf="taskForm.submitted && !task.description" class="error-message">
+        Description is required.
+      </div>
+
+      <label for="dueDate">Due Date:</label>
+      <input
+        id="dueDate"
+        type="date"
+        [(ngModel)]="task.dueDate"
+        name="dueDate"
+        required
+        [ngClass]="{'invalid-input': taskForm.submitted && !task.dueDate}"
+      />
+      <div *ngIf="taskForm.submitted && !task.dueDate" class="error-message">
+        Due Date is required.
+      </div>
+
+      <label for="status">Status:</label>
+      <select
+        id="status"
+        [(ngModel)]="task.status"
+        name="status"
+        required
+        [ngClass]="{'invalid-input': taskForm.submitted && !task.status}"
+      >
+        <option value="">Select a status</option>
+        <option value="pending">Pending</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+      <div *ngIf="taskForm.submitted && !task.status" class="error-message">
+        Status is required.
+      </div>
+
+      <button type="submit">
+        {{ task._id ? 'Edit Task' : 'Add Task' }}
+      </button>
+    </form>
+  </div>
+</div>

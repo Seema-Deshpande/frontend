@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+  <div class="profile-icon" >
+      <img src="../../assets/icons8-user-60.png" alt="Profile Icon" (click)="onProfileClick()">
+    <app-notification></app-notification>
+    <app-settings></app-settings>
+  </div>
+  <div class="content">
+    <div class="content">
+      <div class="task-summary">
+        <div class="summary-item">
+          <h2>Total Tasks</h2>
+          <p>{{ totalTasks }}</p>
+        </div>
+        <div class="summary-item">
+          <h2>Over Due Tasks</h2>
+          <p>{{ overDueTasks }}</p>
+        </div>
+        <div class="summary-item">
+          <h2>Tasks Due Soon</h2>
+          <p>{{ dueSoonTasks }}</p>
+        </div>
+        <div class="summary-item">
+          <h2>Completed Tasks</h2>
+          <p>{{ completedTasks }}</p>
+        </div>
+      </div>
+
+      <!-- Task Management Component -->
+    <div class="task-management">
+      <h2>Task Management</h2>
+
+      <button (click)="navigateToTaskForm()" class="add-task-button">Add New Task</button>
+
+      <div class="filters">
+        <label for="filterStatus">Filter by Status:</label>
+        <select id="filterStatus" (change)="applyFilter($event)">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+
+        <select id="sortBy" (change)="applySort($event)">
+          <option value="">None</option>
+          <option value="dueDate">Due Date</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+
+      <!-- Task List Component -->
+      <app-task-list [tasks]="filteredAndSortedTasks" (editTask)="editTask($event)" (deleteTask)="deleteTask($event)" (drop)="onDrop($event)"></app-task-list>
+    </div>
+  </div>
+</div>

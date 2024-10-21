@@ -1,0 +1,17 @@
+<div class="profile-container">
+  <h1>User Profile</h1>
+  <form (ngSubmit)="updateProfile()">
+    <label for="username">Username:</label>
+    <input id="username" [(ngModel)]="username" name="username" required />
+
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="email" name="email" type="email" required />
+
+    <button type="submit">Update Profile</button>
+  </form>
+
+  <div class="profile-actions">
+    <a routerLink="/dashboard" class="back-button">Back to Dashboard</a>
+    <button (click)="logout()" class="logout-button">Logout</button>
+  </div>
+</div>

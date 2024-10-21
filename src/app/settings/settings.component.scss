@@ -1,0 +1,42 @@
+.settings-container {
+    position: relative;
+    padding-left: 8px;
+    padding-top: 4px;
+    .settings-icon {
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 31px;
+      }
+    }
+  
+    .notification-drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 300px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      z-index: 1000;
+  
+      .drawer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        h2 {
+          margin: 0;
+        }
+  
+        button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  

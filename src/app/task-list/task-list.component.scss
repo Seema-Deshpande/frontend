@@ -1,0 +1,94 @@
+.task-list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff; // Background color for the task list
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .task-item {
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9; // Default background color
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      &.overdue {
+        background-color: #f8d7da; // Light red for overdue
+        color: #721c24; // Dark red text
+      }
+    
+      &.due-soon {
+        background-color: #fff3cd; // Light yellow for due soon
+        color: #856404; // Dark yellow text
+      }
+
+      &:last-child {
+        border-bottom: none; // Remove border for the last item
+      }
+
+      &:hover {
+        background-color: #f1f1f1; // Highlight on hover
+      }
+
+      .task-details {
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          color: #333;
+        }
+
+        p {
+          margin: 5px 0;
+          color: #666;
+        }
+
+        .completed {
+          text-decoration: line-through;
+          color: #999;
+        }
+      }
+
+      .task-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        align-items: center;
+
+        button {
+          background-color: #dc3545;
+          color: #ffffff;
+          border: none;
+          border-radius: 4px;
+          padding: 5px 10px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #c82333;
+          }
+        }
+
+        button:nth-of-type(2) {
+          background-color: #ffc107;
+          margin-left: 10px;
+
+          &:hover {
+            background-color: #e0a800;
+          }
+        }
+      }
+    }
+  }
+  .status-pending {
+    color: #007bff;
+  }
+
+  .status-in-progress {
+    color: #ffc107;
+  }
+
+  .status-completed {
+    color: #28a745;
+  }
